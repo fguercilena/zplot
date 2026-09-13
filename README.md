@@ -1,6 +1,6 @@
 # zplot
 Python scrpit to quickly plot a function on the complex plane in various ways,
-also with domain coloring.
+also with domain coloring. ![alt_text](example.png "Gamma function domain coloring")
 
 ## Requirements
 - Python 3

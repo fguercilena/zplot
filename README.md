@@ -1,15 +1,17 @@
 # zplot
-Python scrpit to quickly plot a function on the complex plane in various ways, also with domain coloring.
+Python scrpit to quickly plot a function on the complex plane in various ways,
+also with domain coloring.
 
 ## Requirements
-Python 3
-numpy
-matplotlib
-scipy
+- Python 3
+- numpy
+- matplotlib
+- scipy
 
 ## Functionality
 
-For starters, simply run `python zplot.py "test"` to get an idea of what the script can do.
+For starters, simply run `python zplot.py "test"` to get an idea of what the
+script can do.
 
 
 ### Importing *zplot.py*
@@ -38,7 +40,7 @@ The arguments are:
 - `levels`: int or array-like
 
 If mode is one of ("real", "imag", "reim"), the script fills an array of values
-for the independent variable, evaluates the `f` on it, and plots the result,
+for the independent variable, evaluates `f` on it, and plots the result,
 using the `Axes` instance if provided or generating one if not. If
 `mode=="real"`, only the real part is plotted, `mode=="imag"`, only the
 imaginary part is plotted, and if `mode==reim` both are plotted ("reim" is
@@ -46,7 +48,8 @@ short for "REal IMag"). All other arguments are ignored.
 
 If mode is one of ("full", "abs", "arg", "3D"), things procede just like above,
 except that a 2D grid of points in the complex plane is generated according to
-`x_range` and `y_range` and the function is evaluated on that. The plot type depend on `mode`:
+`x_range` and `y_range` and the function is evaluated on that. The plot type
+depends on `mode`:
 - if `mode==full`, domain coloring is used: luminosity represents magnitude and
   color represents argument
 - if `mode==arg`, same as "full", but only the argument is shown. The magnitude
@@ -55,6 +58,7 @@ except that a 2D grid of points in the complex plane is generated according to
   is ignored
 - if `mode==3D`, same as "full" , but the function is also represented as a
   surface in 3D space
+
 If `verbose==true`, the scripts prints on how many points of the grid the
 function has been evaluate so far (it can take a while for very fine grids). If
 `mode!=abs`, the way the magnitude is plotted can be controlled by supplying a
@@ -62,5 +66,19 @@ custom scaling function ion argument `scaling`. If `mode==abs`, the plot will
 contain isocontours of magnitude to guide the eye. If `levels==None`, these
 will generated automatically, or they can supplied explicitly.
 
+Finally, note that the `zplot` function takes care of generating colorbars as
+appropriate when `ax==None`. If instead you pass an `Axes` instance, you'll
+have to create subplots for the colorbars and generate them. To this end, the
+almost self-explanatory functions `add_colorbar_abs` and `add_colorbar_arg` can
+be used to avoid doing it manually.
+
 For the domain coloring algorithm, this script incorporates much code from
 [https://github.com/nschloe/cplot].
+
+
+### Running *zplot.py* from the command line
+
+When run directly, arguments and options passed on the command line are parsed
+and passed to the `zplot` function. Simply run `python zplot.py -h` to get an
+explanation of the possible options, and `python zplot.py "test"` to see an
+explample of output.
